@@ -6,10 +6,13 @@
 export default {
   development: {
     client: "postgresql",
-    connection: "postgresql://postgres:ace16@localhost:5432/recipe_platinum",
-  },
-  migrations: {
-    directory: "./src/db/migrations",
+    connection: "postgresql://root:root@localhost:5434/recipe_platinum",
+    migrations: {
+      directory: "./src/db/migrations",
+    },
+    seeds: {
+      directory: "./src/db/seeds",
+    },
   },
 
   staging: {
