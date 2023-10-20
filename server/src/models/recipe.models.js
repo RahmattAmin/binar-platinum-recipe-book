@@ -34,4 +34,4 @@ class RecipeModels {
   }
 }
 
-export default RecipeModels;
+export default { RecipeModels };

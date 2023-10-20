@@ -3,10 +3,13 @@
  * @returns { Promise<void> }
  */
 export async function up(knex) {
-  return knex.schema.createTable("users", (table) => {
+  return knex.schema.createTable("user_profile", (table) => {
     table.uuid("id").unique().notNullable().primary();
-    table.string("username").notNullable();
-    table.string("password").notNullable();
+    table.uuid("user_id").references("id").inTable("users").onDelete("CASCADE");
+    table.string("email");
+    table.string("full_name");
+    table.string("date_of_birth");
+    table.string("address");
     table.timestamps(true, true);
   });
 }
@@ -16,5 +19,5 @@ export async function up(knex) {
  * @returns { Promise<void> }
  */
 export async function down(knex) {
-  return knex.schema.dropTable("users");
+  return knex.schema.dropTable("user_profile");
 }
