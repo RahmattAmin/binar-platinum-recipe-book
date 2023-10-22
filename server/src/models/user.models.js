@@ -53,25 +53,3 @@ class user {
 }
 
 export default user;
-
-// module.exports = {
-//   createUser,
-//   getUserByUsername,
-//   getAllUser,
-//   updateUserPassword,
-//   deleteUser,
-// };
-
-// class users {
-//   // register user
-//   async insert(username, hash_password) {
-//     const newUser = {
-//       id: v4(),
-//       username,
-//       password: hash_password,
-//     };
-//     return await db.insert(newUser).into("users").returning("*");
-//   }
-// }
-
-// export default users;
