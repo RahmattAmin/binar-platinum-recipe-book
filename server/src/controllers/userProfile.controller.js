@@ -1,4 +1,5 @@
 import { responseOk, responseError } from "../helpers/restResponse.helper.js";
+// import db from "../config/db.js";
 import userProfileModels from "../models/userProfile.models.js";
 
 // const models = new userProfile()
@@ -6,12 +7,12 @@ import userProfileModels from "../models/userProfile.models.js";
 const userProfile = new userProfileModels();
 
 async function getUserProfile(req, res) {
-  const userId = req.params.userId;
+  const userId = req.params.local_user;
 
   try {
-    const userProfilesss = await userProfile.getUserProfileByUserId(userId);
-    if (userProfilesss) {
-      return res.status(200).json(responseOk("Success Get User Profile", userProfilesss));
+    await userProfile.getUserProfileByUserId(userId);
+    if (userProfile) {
+      return res.status(200).json(responseOk("Success Get User Profile", userProfile));
     }
   } catch (e) {
     console.error("Error fetching user profile: ", e);

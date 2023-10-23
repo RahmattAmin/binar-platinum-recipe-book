@@ -7,7 +7,7 @@ class userProfile {
 
   async getUserProfileByUserId(userId) {
     try {
-      return await db("user_profile").where("user_id", userId).first();
+      return await db("user_profile").first("full_name").where("user_id", userId);
     } catch (e) {
       throw new ErrorServer(e.detail);
     }

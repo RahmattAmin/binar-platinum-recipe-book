@@ -57,8 +57,8 @@ async function isLogin(req, res) {
   try {
     const userByUsername = await users.getUserByUsername(username);
     if (userByUsername && (await bcrypt.compare(password, userByUsername.hash_password))) {
-      const access_token = jwt.sign({ user: { user_id: userByUsername.id } }, JWT_KEY, {
-        expiresIn: "1h",
+      const access_token = jwt.sign({ user: { user_id: userByUsername.id, username: userByUsername.username } }, JWT_KEY, {
+        expiresIn: "10h",
       });
       return res.status(201).json(responseOk("Login Sucessfully", { access_token: access_token }));
     } else {
